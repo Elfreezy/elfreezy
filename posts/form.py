@@ -1,6 +1,7 @@
-from wtforms import Form, TextAreaField, StringField
+from wtforms import Form, StringField
+from flask_ckeditor import CKEditorField
 
 
 class PostForm(Form):
     title = StringField('title')
-    body = TextAreaField('text')
+    body = CKEditorField('text')

@@ -3,6 +3,8 @@ from flask_security import current_user
 from flask import request, redirect, url_for
 from flask_admin import AdminIndexView
 
+from flask_ckeditor import CKEditorField
+
 
 class BaseModelView(ModelView):
     def on_model_change(self, form, model, is_created):
@@ -32,6 +34,10 @@ class HomeAdminView(AdminMixin, AdminIndexView):
 
 
 class PostAdminView(AdminView, BaseModelView):
+    form_overrides = dict(body=CKEditorField)
+    create_template = 'edit.html'
+    edit_template = 'edit.html'
+
     form_columns = ['title', 'body', 'tags']
 
 

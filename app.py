@@ -10,6 +10,8 @@ from flask_admin import Admin
 from flask_security import Security
 from flask_security import SQLAlchemyUserDatastore
 
+from flask_ckeditor import CKEditor
+
 from config import Configuration
 
 
@@ -25,6 +27,9 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
+
+# Поключение CKEditor
+ckeditor = CKEditor(app)
 
 
 # ADMIN
